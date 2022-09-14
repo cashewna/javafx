@@ -1,4 +1,4 @@
-package com.pckoala.javafx;
+package com.pckoala.javafx.chapter14;
 
 import javafx.application.Application;
 import javafx.geometry.HPos;
@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 public class ShowGridPane extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) {
         // Create a grid pane and set its properties
         GridPane pane = new GridPane();
         pane.setAlignment(Pos.CENTER);
@@ -25,8 +25,8 @@ public class ShowGridPane extends Application {
         // Place nodes in the pane
         pane.add(new Label("First Name:"), 0, 0);
         pane.add(new TextField(), 1, 0);
-        pane.add(new Label("MI:"), 0, 1);
-        pane.add(new TextField(), 1, 2);
+        pane.add(new Label("MI:"), 0, 1); // Middle Initial
+        pane.add(new TextField(), 1, 1);
         pane.add(new Label("Last Name:"), 0, 2);
         pane.add(new TextField(), 1, 2);
         Button btAdd = new Button("Add Name");
