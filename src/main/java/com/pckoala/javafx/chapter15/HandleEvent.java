@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 public class HandleEvent extends Application {
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) {
         // Create a pane and set its properties
         HBox pane = new HBox(10);
         pane.setAlignment(Pos.CENTER);
@@ -42,5 +42,9 @@ public class HandleEvent extends Application {
         public void handle(ActionEvent event) {
             System.out.println("Cancel button clicked.");
         }
+    }
+
+    public static void main(String[] args) {
+        Application.launch(args);
     }
 }
