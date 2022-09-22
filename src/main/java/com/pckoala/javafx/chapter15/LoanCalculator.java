@@ -3,6 +3,7 @@ import com.pckoala.javafx.chapter10.Loan;
 import javafx.application.Application;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -15,7 +16,7 @@ public class LoanCalculator extends Application {
   private TextField tfLoanAmount = new TextField();
   private TextField tfMonthlyPayment = new TextField();
   private TextField tfTotalPayment = new TextField();
-  private Button btCalculate = new Button();
+  private Button btCalculate = new Button("Calculate");
 
   @Override
   public void start(Stage primaryStage) {
@@ -48,6 +49,12 @@ public class LoanCalculator extends Application {
 
     // Process events
     btCalculate.setOnAction(event -> calculateLoanPayment());
+
+    // Create a scene and place it in the stage
+    Scene scene = new Scene(gridPane, 400, 250);
+    primaryStage.setTitle("Loan Calculator");
+    primaryStage.setScene(scene);
+    primaryStage.show();
   }
 
   private void calculateLoanPayment() {
@@ -58,5 +65,13 @@ public class LoanCalculator extends Application {
 
     // Create a loan object
     Loan loan = new Loan(interest, years, loanAmount);
+
+    // Display monthly payment and total payment
+    tfMonthlyPayment.setText(String.format("$%.2f", loan.getMonthlyPayment()));
+    tfTotalPayment.setText(String.format("$%,2f", loan.getTotalPayment()));
+  }
+
+  public static void main(String[] args) {
+    Application.launch(args);
   }
 }

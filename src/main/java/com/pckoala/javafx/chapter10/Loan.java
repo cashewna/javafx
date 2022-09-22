@@ -44,7 +44,7 @@ public class Loan {
   }
 
   public double getMonthlyPayment() {
-    double monthlyInterestRate = annualInterestRate / 12;
+    double monthlyInterestRate = annualInterestRate / 1200;
     return loanAmount
         * monthlyInterestRate
         / (1 - 1 / Math.pow(1 + monthlyInterestRate, numberOfYears * 12));
