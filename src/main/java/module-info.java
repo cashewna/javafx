@@ -10,4 +10,5 @@ module com.pckoala.javafx {
     opens com.pckoala.javafx.chapter14 to javafx.fxml;
     exports com.pckoala.javafx.chapter10;
     exports com.pckoala.javafx.tutorial4;
+    exports com.pckoala.javafx.tutorial5;
 }
