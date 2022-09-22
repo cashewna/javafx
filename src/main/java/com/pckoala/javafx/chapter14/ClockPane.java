@@ -61,7 +61,7 @@ public class ClockPane extends Pane {
     /**
      * Set the current time for the clock
      */
-    private void setCurrentTime() {
+    public void setCurrentTime() {
         Calendar calendar = new GregorianCalendar();
 
         // Set current time
