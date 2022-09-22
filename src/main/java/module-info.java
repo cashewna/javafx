@@ -1,6 +1,7 @@
 module com.pckoala.javafx {
     requires javafx.controls;
     requires javafx.fxml;
+    requires javafx.media;
 
 
     opens com.pckoala.javafx to javafx.fxml;
