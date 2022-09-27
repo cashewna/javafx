@@ -14,9 +14,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
+import javafx.util.converter.BooleanStringConverter;
+import javafx.util.converter.DoubleStringConverter;
 
 public class TableViewDemo extends Application {
 
@@ -27,6 +30,7 @@ public class TableViewDemo extends Application {
   @Override
   public void start(Stage primaryStage) throws Exception {
     TableView<Country> tableView = new TableView<>();
+
     ObservableList<Country> data =
         FXCollections.observableArrayList(
             new Country("USA", "Washington DC", 280, true),
@@ -90,6 +94,47 @@ public class TableViewDemo extends Application {
           tfPopulation.clear();
         });
 
+    // Allow table data to be edited
+    tableView.setEditable(true);
+    countryColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+    countryColumn.setOnEditCommit(
+        event ->
+            event
+                .getTableView()
+                .getItems()
+                .get(event.getTablePosition().getRow())
+                .setCountry(event.getNewValue()));
+
+    capitalColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+    capitalColumn.setOnEditCommit(
+        event ->
+            event
+                .getTableView()
+                .getItems()
+                .get(event.getTablePosition().getRow())
+                .setCapital(event.getNewValue()));
+
+    // Convert double to string
+    populationColumn.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
+    populationColumn.setOnEditCommit(
+        event ->
+            event
+                .getTableView()
+                .getItems()
+                .get(event.getTablePosition().getRow())
+                .setPopulation(event.getNewValue()));
+
+    // Convert boolean to string
+    democraticColumn.setCellFactory(
+        TextFieldTableCell.forTableColumn(new BooleanStringConverter()));
+    democraticColumn.setOnEditCommit(
+        event ->
+            event
+                .getTableView()
+                .getItems()
+                .get(event.getTablePosition().getRow())
+                .setDemocratic(event.getNewValue()));
+
     BorderPane pane = new BorderPane();
     pane.setCenter(tableView);
     pane.setBottom(flowPane);
@@ -118,7 +163,6 @@ public class TableViewDemo extends Application {
       return capital.get();
     }
 
-    @SuppressWarnings("unused")
     public void setCapital(String capital) {
       this.capital.set(capital);
     }
@@ -168,7 +212,6 @@ public class TableViewDemo extends Application {
       return country.get();
     }
 
-    @SuppressWarnings("unused")
     public void setCountry(String country) {
       this.country.set(country);
     }
