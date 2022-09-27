@@ -7,10 +7,15 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 
 public class TableViewDemo extends Application {
@@ -50,8 +55,44 @@ public class TableViewDemo extends Application {
     //noinspection unchecked
     tableView.getColumns().addAll(countryColumn, capitalColumn, populationColumn, democraticColumn);
 
-    Pane pane = new Pane();
-    pane.getChildren().add(tableView);
+    // Allow user to add data to the table
+    FlowPane flowPane = new FlowPane(3, 3);
+    TextField tfCountry = new TextField();
+    TextField tfCapital = new TextField();
+    TextField tfPopulation = new TextField();
+    CheckBox chkDemocratic = new CheckBox("Is Democratic?");
+    Button btAddRow = new Button("Add new row");
+    tfCountry.setPrefColumnCount(5);
+    tfCapital.setPrefColumnCount(5);
+    tfPopulation.setPrefColumnCount(5);
+    flowPane
+        .getChildren()
+        .addAll(
+            new Label("Country: "),
+            tfCountry,
+            new Label("Capital: "),
+            tfCapital,
+            new Label("Population: "),
+            tfPopulation,
+            chkDemocratic,
+            btAddRow);
+
+    btAddRow.setOnAction(
+        event -> {
+          data.add(
+              new Country(
+                  tfCountry.getText(),
+                  tfCapital.getText(),
+                  Double.parseDouble(tfPopulation.getText()),
+                  chkDemocratic.isSelected()));
+          tfCountry.clear();
+          tfCapital.clear();
+          tfPopulation.clear();
+        });
+
+    BorderPane pane = new BorderPane();
+    pane.setCenter(tableView);
+    pane.setBottom(flowPane);
     Scene scene = new Scene(pane, 600, 300);
     primaryStage.setTitle("TableView Demo");
     primaryStage.setScene(scene);
