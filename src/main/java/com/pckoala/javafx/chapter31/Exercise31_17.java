@@ -76,6 +76,12 @@ public class Exercise31_17 extends Application {
     // Create event handlers
     btnCalculate.setOnMouseClicked(
         event -> calculateFutureValue(investmentAmount, numberOfYears, annualInterestRate));
+
+    menuCalculate.setOnAction(
+        event -> {
+          calculateFutureValue(investmentAmount, numberOfYears, annualInterestRate);
+          menuOperation.hide();
+        });
   }
 
   private void calculateFutureValue(
