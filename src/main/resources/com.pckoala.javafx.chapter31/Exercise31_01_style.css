@@ -1,0 +1,19 @@
+.white-fill {
+  -fx-fill: white;
+}
+
+.black-stroke {
+  -fx-stroke: black;
+}
+
+.stroke__width-lg {
+  -fx-stroke-width: 3;
+}
+
+#red-stroke {
+  -fx-stroke: red;
+}
+
+#green-fill {
+  -fx-fill: green;
+}
