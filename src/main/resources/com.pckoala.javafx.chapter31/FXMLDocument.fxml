@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+<BorderPane maxHeight="200" maxWidth="600" minHeight="200" minWidth="600" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pckoala.javafx.chapter31.FXMLDocumentController">
+  <bottom>
+    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" BorderPane.alignment="CENTER">
+      <Button mnemonicParsing="false" onAction="#addButtonAction" text="Add" />
+      <Button mnemonicParsing="false" onAction="#subtractButtonAction" text="Subtract" />
+      <Button mnemonicParsing="false" onAction="#multiplyButtonAction" text="Multiply" />
+      <Button mnemonicParsing="false" onAction="#divideButtonAction" text="Divide" />
+    </HBox>
+  </bottom>
+  <center>
+    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" BorderPane.alignment="CENTER">
+      <BorderPane.margin>
+        <Insets />
+      </BorderPane.margin>
+      <Label text="Number 1" />
+      <TextField fx:id="tfNumber1" prefColumnCount="7" />
+      <Label text="Number 2" />
+      <TextField fx:id="tfNumber2" prefColumnCount="7" />
+      <Label text="Result" />
+      <TextField fx:id="tfResult" prefColumnCount="7" />
+    </HBox>
+  </center>
+</BorderPane>
