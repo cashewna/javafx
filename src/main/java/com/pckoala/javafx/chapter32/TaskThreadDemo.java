@@ -11,6 +11,10 @@ public class TaskThreadDemo {
     Thread thread1 = new Thread(printA);
     Thread thread2 = new Thread(printB);
     Thread thread3 = new Thread(print100);
+    thread3.setPriority(
+        Thread
+            .MAX_PRIORITY); // Program will only run this first if CPU utilisation is at max -
+                            // multithreading can ignore this if CPU utilisation is not maxed
 
     // Start threads
     thread1.start();
