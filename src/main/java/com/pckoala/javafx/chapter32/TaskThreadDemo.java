@@ -22,7 +22,7 @@ public class TaskThreadDemo {
     thread3.start();
   }
 
-  private static class PrintChar implements Runnable {
+  public static class PrintChar implements Runnable {
     private final char charToPrint; // The character to print
     private final int times; // The number of times to repeat
 
@@ -46,7 +46,7 @@ public class TaskThreadDemo {
   }
 
   // The task class for printing numbers from 1 to n for a given n
-  private static class PrintNum implements Runnable {
+  public static class PrintNum implements Runnable {
     private final int lastNum;
 
     /**
