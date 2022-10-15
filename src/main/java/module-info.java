@@ -24,4 +24,5 @@ module com.pckoala.javafx {
       javafx.fxml;
 
   exports com.pckoala.javafx.tutorial6;
+  exports com.pckoala.javafx.chapter32;
 }
